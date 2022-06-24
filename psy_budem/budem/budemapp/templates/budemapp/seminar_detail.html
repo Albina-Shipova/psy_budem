@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block title %}{{ seminar_item.title }}{% endblock %}
+{% block content %}
+<div class="section">
+    <div class="container-fluid text-center w-75 my-5">
+        <h1 class="py-3">{{ seminar_item.title }}</h1>
+        <h3 class="py-3">О семинаре</h3>
+        <p>{{ seminar_item.description  | safe }}</p>
+    </div>
+    <div class="text-center">
+        <img class="img-fluid imgsizedetail" src="{{ seminar_item.photo.url }}" alt="">
+    </div>
+    <div class="container-fluid text-center w-75 my-5">
+        <h3 class="py-3">Время и место</h3>
+        <p> {{ seminar_item.date_of_seminar }}</p>
+        <h3 class="py-3">Дополнительная информация</h3>
+        <p>{{ seminar_item.more_info  | safe }}</p>
+    </div>
+</div>
+{% endblock %}

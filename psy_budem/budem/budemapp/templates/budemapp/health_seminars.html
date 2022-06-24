@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block title %}Психология{% endblock %}
+{% block content %}
+    <div class="container mt-md-4 m-auto">
+        <div class="row">
+            <div class="col-md-4 col-lg-3 d-none d-md-block">
+                <nav class="nav flex-column my-5 position-fixed" id="leftsidebar">
+                    {% for item in health_list %}
+                      <a class="nav-link" href="#{{ item.id }}">{{ item.title }}</a>
+                    {% endfor %}
+                </nav>
+            </div>
+            <div class="col-md-8 col-lg-9 col-sm-12" data-bs-spy="scroll" data-bs-target="#leftsidebar" tabindex="0">
+                {% for item in health_list %}
+                    <div class="container scrollside" id="{{ item.id }}">
+                        <div class="row justify-content-center">
+                            <div class="col-3 d-none d-lg-block">
+                                <img class="rounded-circle img-fluid imgsizelist" src="{{ item.photo.url }}" alt="" width="170">
+                            </div>
+                            <div class="col-lg-9 col-sm-12 col-md-12 text-center text-lg-start">
+                                <img class="rounded-circle img-fluid imgsizelist d-lg-none mb-3" src="{{ item.photo.url }}" alt=""
+                                                    width="170">
+                                <h4 >{{ item.title }}</h4>
+                                <hr>
+                                <p>{{ item.description | safe }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

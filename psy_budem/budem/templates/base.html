@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel='stylesheet' href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel='stylesheet' href="{% static 'bootstrap/css/bootstrap-grid.min.css' %}">
+    <link rel='stylesheet' href="{% static 'css/style.css' %}">
+    <script src="{% static 'bootstrap/js/jquery-3.5.1.min.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'bootstrap/js/scripts.js' %}"></script>
+    <title>{% block title %}Главная | Соцветие{% endblock %}</title>
+</head>
+<body>
+{% block navbar %}
+    {% include 'inc/_nav.html' %}
+{% endblock %}
+
+{% block content %}
+    CONTENT
+{% endblock %}
+
+{% block footer %}
+    <div class="container" id="myfooter">
+    <div class="row">
+        <div class="col">
+            <footer class="navbar navbar-toggleable-md navbar-inverse bg-faded mt-4">
+                <div class="container pt-4 pb-3">
+                    <div class="w-100 small text-center align-self-end"><span class="small">©2019 by Соцветие - психологический центр.</span>
+                    </div>
+                    <br>
+                </div>
+            </footer>
+        </div>
+    </div>
+</div>
+{% endblock %}
+</body>
+
+</html>

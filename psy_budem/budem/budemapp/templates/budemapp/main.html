@@ -1,0 +1,382 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col p-md-0">
+                <img class="img-fluid w-100 position-relative mt-md-5"
+                     src="{% static 'img/denys-nevozhai-191635-unsplash.jpg' %}">
+            </div>
+            <div class="container position-absolute pt-3 pt-lg-5">
+                <h1 align="center">СОЦВЕТИЕ</h1>
+                <h2 align="center">Центр гармонии личности и семьи</h2>
+                <div class="container mt-4 pt-lg-5 d-none d-md-block">
+                    <div class="row row-cols-3 pt-lg-5 g-lg-5 g-md-2 mx-lg-4 justify-content-center">
+                        <div class="col">
+                            <div class="card h-100" id="transBlock">
+                                <div class="card-body">
+                                    <a href="{% url 'psy' %}"><h5 align="center" class="py-lg-2">Психология</h5></a>
+                                    <ul>
+                                        <li>Личные, семейные и детские консультации</li>
+                                        <li>Цикл семинаров по самопознанию и саморазвитию</li>
+                                        <li>Цикл семинаров по совершенствованию взаимоотношений</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100 pb-0" id="transBlock">
+                                <div class="card-body pb-0">
+                                    <a href="{% url 'business' %}"><h5 align="center" class="py-lg-2">
+                                        Бизнес-тренинги</h5>
+                                    </a>
+                                    <ul>
+                                        <li>Навыки самопрезентации</li>
+                                        <li>Ассертивное поведение</li>
+                                        <li>Анти – манипуляции</li>
+                                        <li>Состоятельность</li>
+                                        <li>Продажи</li>
+                                        <li>Семинары по мотивации, личностному росту и лидерству в бизнесе прямых продаж
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100" id="transBlock">
+                                <div class="card-body pb-0">
+                                    <a href="{% url 'health' %}"><h5 align="center" class="py-lg-2">Здоровье и
+                                        красота</h5>
+                                    </a>
+                                    <ul>
+                                        <li>Программы детоксикации организма</li>
+                                        <li>Экспресс–тестирование состояния здоровья на квантовом магнитом
+                                            биоанализаторе
+                                        </li>
+                                        <li>Кулинарные мастер-классы для детей и взрослых на основе здорового питания
+                                        </li>
+                                        <li>Лекции по нутрициологии</li>
+                                        <li>Рэйки</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container position-relative mt-4 d-md-none">
+                <div class="row row-cols-1 bg-white px-4">
+                    <div class="col">
+                        <a href="{% url 'psy' %}"><h5 align="center">Психология</h5></a>
+                        <ul>
+                            <li>Личные, семейные и детские консультации</li>
+                            <li>Цикл семинаров по самопознанию и саморазвитию</li>
+                            <li>Цикл семинаров по совершенствованию взаимоотношений</li>
+                        </ul>
+                    </div>
+                    <div class="col">
+                        <a href="{% url 'business' %}"><h5 align="center">Бизнес-тренинги</h5></a>
+                        <ul>
+                            <li>Навыки самопрезентации</li>
+                            <li>Ассертивное поведение</li>
+                            <li>Анти – манипуляции</li>
+                            <li>Состоятельность</li>
+                            <li>Продажи</li>
+                            <li>Семинары по мотивации, личностному росту и лидерству в бизнесе прямых продаж</li>
+                        </ul>
+                    </div>
+                    <div class="col">
+                        <a href="{% url 'health' %}"><h5 align="center">Здоровье и красота</h5></a>
+                        <ul>
+                            <li>Программы детоксикации организма</li>
+                            <li>Доклиническое экспресс – тестирование состояния здоровья на квантовом магнитом
+                                биоанализаторе
+                            </li>
+                            <li>Кулинарные мастер-классы для детей и взрослых на основе здорового питания</li>
+                            <li>Лекции по нутрициологии</li>
+                            <li>Рэйки</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <section>
+        <h3 class="mt-md-5" align="center">Наши тренинги</h3>
+        <div class="container d-none d-md-block">
+            <div class="row">
+                {% for item in seminar_list %}
+                    <div class="col-lg-4 col-md-6" align="center">
+                        <div class="container">
+                            <img class="img-fluid my-md-5 imgsize" src="{{ item.photo.url }}" alt="">
+                            <h5>{{ item.title }}</h5>
+                            <p>{{ item.date_of_seminar }}</p>
+                            <a class="btn btn-my" href="{% url 'detail' item.pk %}" role="button">О тренинге</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="container w-80 mt-4 d-md-none">
+            <div id="carousel" class="carousel slide d-md-none" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    {% for item in seminar_list %}
+                        {% if forloop.first %}
+                            <button type="button" data-bs-target="#carousel" data-bs-slide-to="{{ forloop.counter0 }}" class="active"
+                                    aria-current="true"></button>
+                        {% else %}
+                            <button type="button" data-bs-target="#carousel" data-bs-slide-to="{{ forloop.counter0 }}"></button>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="carousel-inner">
+                    {% for item in seminar_list %}
+                        {% if forloop.first %}
+                            <div class="carousel-item active">
+                        {% else %}
+                            <div class="carousel-item">
+                        {% endif %}
+                        <img class="img-fluid imgsizecarousel w-80" src="{{ item.photo.url }}" alt="">
+                        <div class="carousel-caption bg-black bg-opacity-75">
+                            <h3>{{ item.title }}</h3>
+                            <p>{{ item.date_of_seminar }}</p>
+                            <a class="btn btn-my" href="{% url 'detail' item.pk %}" role="button">О тренинге</a>
+                        </div>
+                        </div>
+                    {% endfor %}
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span></button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <h3 class="my-5" align="center">О нас</h3>
+        <div class="container mx-auto">
+            <div class=" row row-cols-lg-4 row-cols-2 g-4 justify-content-center">
+                <div class="col">
+                    <div class="card text-center h-100">
+                        <div class="card-body">
+                            <img src="{% static 'img/time.png' %}" class="pb-4" width="40%" alt="...">
+                            <h6 class="card-title">РАБОТАЕМ С 1991 ГОДА</h6>
+                            <p class="card-text">во всех направлениях взрослой, детской и семейной психологии.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card text-center h-100">
+                        <div class="card-body">
+                            <img src="{% static 'img/people.png' %}" class="pb-4" width="40%" alt="...">
+                            <h6 class="card-title">ПРОВЕДЕНО ТЫСЯЧИ СЕМИНАРОВ</h6>
+                            <p class="card-text">тренингов, консультаций, лекций и клубных встреч</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card text-center h-100">
+                        <div class="card-body">
+                            <img src="{% static 'img/motherwithchild.png' %}" class="pb-4" width="40%" alt="...">
+                            <h6 class="card-title">БОЛЕЕ 10000 ВЗРОСЛЫХ И ДЕТЕЙ</h6>
+                            <p class="card-text">всех возрастов стали участниками наших мероприятий</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card text-center h-100">
+                        <div class="card-body">
+                            <img src="{% static 'img/brain.png' %}" class="pb-4" width="40%" alt="...">
+                            <h6 class="card-title">НАУЧНОЕ ОБОСНОВАНИЕ ПРОГРАММ</h6>
+                            <p class="card-text">защищено докторскими и кандидатскими работами по психологии и
+                                экономике</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container bg-light mt-5" align=center>
+            <div id="carousel2" data-bs-interval="false" class="carousel slide" data-interval="false"
+                 data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carousel2" data-bs-slide-to="0" class="active"
+                            aria-current="true"></button>
+                    <button type="button" data-bs-target="#carousel2" data-bs-slide-to="1"></button>
+                    <button type="button" data-bs-target="#carousel2" data-bs-slide-to="2"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row justify-content-center">
+                            <div class="col col-lg-3">
+                                <img class="img-fluid box"
+                                     src="{% static 'img/WhatsApp Image 2019-06-14 at 15.05.11.jpeg' %}"
+                                     alt="Slide 1">
+                            </div>
+                            <div class="col col-lg-3">
+                                <img class="img-fluid box"
+                                     src="{% static 'img/WhatsApp Image 2019-06-14 at 15.05.10.jpeg' %}"
+                                     alt="Slide 2">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row justify-content-center">
+                            <div class="col-6 col-lg-3">
+                                <img class="img-fluid box"
+                                     src="{% static 'img/WhatsApp Image 2019-06-14 at 15.07.56.jpeg' %}"
+                                     alt="Slide 1">
+                            </div>
+                            <div class="col-6 col-lg-3">
+                                <img class="img-fluid box "
+                                     src="{% static 'img/WhatsApp Image 2019-06-14 at 15.06.42.jpeg' %}"
+                                     alt="Slide 2">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row justify-content-center">
+                            <div class="col-6 col-lg-3">
+                                <img class="img-fluid box"
+                                     src="{% static 'img/WhatsApp Image 2019-06-14 at 15.07.57.jpeg' %}"
+                                     alt="Slide 5">
+                            </div>
+                            <div class="col-6 col-lg-3">
+                                <img class="img-fluid box"
+                                     src="{% static 'img/WhatsApp Image 2019-06-14 at 15.06.43.jpeg' %}"
+                                     alt="Slide 6">
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev carousel-dark" type="button" data-bs-target="#carousel2"
+                            data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon " aria-hidden="true"></span></button>
+                    <button class="carousel-control-next carousel-dark" type="button" data-bs-target="#carousel2"
+                            data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span></button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <h3 class="mt-5" align="center">Наши специалисты</h3>
+        <p class="mb-sm-5" align="center">Кто мы?</p>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-sm col-md-6" align="center">
+                    <div class="container p-0">
+                        <div class="box232440 p-0 mb-5"><img class="img-fluid pb-2"
+                                                             src="{% static 'img/Альбина Шипова.jpg' %}" alt=""></div>
+                        <div class="container px-3 pb-5"><h5>АЛЬБИНА ШИПОВА</h5>
+                            <p>Руководитель центра с 1991г, кандидат психологических наук, семейный психолог, специалист
+                                по
+                                нутрициологии и нелекарственным методам оздоровления</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm col-md-6 p-0" align="center">
+                    <div class="container p-0">
+                        <div class="box232440 p-0 mb-5"><img class="img-fluid pb-2"
+                                                             src="{% static 'img/всеволод брук.jpg' %}"
+                                                             alt=""></div>
+                        <div class="container px-3 pb-5"><h5>ВСЕВОЛОД БРУК</h5>
+                            <p>Доктор психологических наук, семейный психолог, психотерапевт, ведущий тренингов семейной
+                                и
+                                групповой психотерапии, астропсихолог</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm col-md-6 p-0" align="center">
+                    <div class="container p-0">
+                        <div class="box232440 mb-5"><img class="img-fluid pb-2"
+                                                         src="{% static 'img/Светлана Власенкова.jpeg' %}" alt=""></div>
+                        <div class="container px-3 pb-5"><h5>СВЕТЛАНА ВЛАСЕНКОВА</h5>
+                            <p>Администратор центра, детский психолог с опытом более 25 лет, мастер Рейки, ведущая
+                                тренингов
+                                раннего развития для детей</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm col-md-6 p-0" align="center">
+                    <div class="container p-0">
+                        <div class="box232440 mb-5"><img class="img-fluid pb-2" src="{% static 'img/Алексей.jpg' %}"
+                                                         alt="">
+                        </div>
+                        <div class="container px-3 pb-5"><h5>АЛЕКСЕЙ ШИПОВ</h5>
+                            <p>Кандидат экономических наук, ведущий бизнес-тренингов по продажам, переговорам,
+                                самопрезентации,
+                                публичным выступлениям и пр</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="container-fluid mt-5 bg-light" align="center">
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <h4 class="pt-5 pb-3">ОТЗЫВЫ</h4>
+                <div id="carousel3" class="carousel slide" data-bs-interval="false" data-bs-ride="carousel">
+                    <div class="carousel-indicators alert-dark mt-5">
+                        {% for item in review %}
+                            {% if forloop.first %}
+                                <button type="button" data-bs-target="#carousel3" data-bs-slide-to=" {{ forloop.counter0 }}" class="active"
+                                        aria-current="true"></button>
+                            {% else %}
+                                <button type="button" data-bs-target="#carousel3" data-bs-slide-to="{{ forloop.counter0 }}"></button>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+
+                            <div class="carousel-inner">
+                                 <div class="row justify-content-center">
+                        <div class="col-10">
+                                {% for item in review %}
+                                    {% if forloop.first %}
+                                        <div class="carousel-item active mb-5" style="height: auto">
+                                    {% else %}
+                                        <div class="carousel-item mb-5" style="height: auto">
+                                    {% endif %}
+                                        <p><small class="text-muted">{{ item.author }}</small></p>
+                                        <p class="px-md-5 px-sm-1">{{ item.text }}</p>
+                                        </div>
+                                {% endfor %}
+                                   </div>
+                        </div>
+                                <button class="carousel-control-prev carousel-dark" type="button"
+                                        data-bs-target="#carousel3" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon " aria-hidden="true"></span></button>
+                                <button class="carousel-control-next carousel-dark" type="button"
+                                        data-bs-target="#carousel3" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span></button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container-fluid my-5 w-75">
+        <div class="row text-center">
+            <div class="col-md-6 col-sm bg-light">
+                <h3 class="p-lg-5 pb-2 pt-3">КОНТАКТЫ</h3>
+                <div class="contact-text">
+                    <p>Запись на семинары и консультации</p>
+                    <p>Администратор Власенкова Светлана</p>
+                    <p>89163441787 svetamargo@mail.ru</p>
+                    <p>Москва, Россия</p>
+                </div>
+            </div>
+            <div class="col d-none d-md-block">
+                <img class="img-fluid" src="{% static 'img/contacts.jpg' %}" alt="">
+            </div>
+        </div>
+    </div>
+{% endblock %}

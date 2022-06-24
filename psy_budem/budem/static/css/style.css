@@ -1,0 +1,154 @@
+@font-face {
+    font-family: 'Montserrat';
+    font-weight: 400;
+    font-style: normal;
+    /* Браузер сначала попробует найти шрифт локально */
+    src: local('Montserrat'),
+    url('../fonts/Montserrat/Montserrat-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: "Montserrat";
+    font-weight: 600;
+    font-style: normal;
+    src: local("Montserrat"),
+    url("../fonts/Montserrat/Montserrat-SemiBold.ttf") format("truetype");
+}
+
+body{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: black;
+    line-height: 1.5;
+    align-content:center;
+}
+
+nav.navbar .dropdown:hover > .dropdown-menu.max {
+    display: block;
+}
+
+@media (max-width: 767px){
+    nav.navbar .dropdown:hover .dropdown-menu.max{
+        display: none;
+    }
+}
+
+@media (min-width: 768px){
+    .dropdown-menu{
+        left: 50%;
+        right: auto;
+        text-align: center;
+        transform: translate(-50%, 0);
+    }
+}
+.dropdown-menu,
+.start{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    border: none;
+    width: max-content;
+}
+
+.navbar-light .navbar-toggler{
+    border-radius: 50px;
+}
+
+.navbar-light .navbar-nav .nav-link{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: black;
+}
+
+h1 {
+    font-size: 3.9vmax;
+}
+
+
+h2{
+    font-size: 1.5vmax;
+}
+contact-text{
+    font-size: 1.5vmax;
+}
+A:link {
+    color: #000;
+    text-decoration: none; /* Убирает подчеркивание для ссылок */
+}
+A:visited {
+        color: #000;
+    text-decoration: none; }
+A:active {
+        color: #000;
+    text-decoration: none; }
+A:hover {
+    color: lightgrey; /* Цвет ссылки */
+}
+
+#transBlock{
+    border-radius: 20px !important;
+    opacity: 0.9;
+}
+
+.btn-my{
+    color: #fff;
+    background-color: rgb(227, 208, 168);
+}
+
+.box{
+    height:320px;
+    overflow:hidden;
+}
+
+.box232440{
+    height:210px;
+    width:200px;
+    overflow: hidden;
+}
+
+.box430{
+    height:430px;
+}
+
+.scrollside::before {
+    height: 60px;
+    content: "";
+    display:block;
+}
+
+.imgsize{
+    height: 248px;
+    width: 248px;
+    overflow: hidden;
+    object-position: 50% 50%;
+    object-fit: cover;
+}
+
+.imgsizecarousel{
+    height: 100vw;
+    width: 100vw;
+    overflow: hidden;
+}
+
+.imgsizedetail{
+    height: 440px;
+    width: 980px;
+    overflow: hidden;
+    object-position: 50% 50%;
+    object-fit: cover;
+}
+
+.imgsizelist{
+    height: 170px;
+    width: 170px;
+    overflow: hidden;
+    object-position: 50% 50%;
+    object-fit: cover;
+}
+
+#leftsidebar{
+	overflow-y: auto;
+	overflow-x: hidden;
+}
